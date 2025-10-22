@@ -41,6 +41,14 @@ public class MainActivity extends AppCompatActivity {
 
         cityList.setAdapter(cityAdapter);
 
+        cityList.setOnItemClickListener((parent, view, position, id) -> {
+            String cityName = (String) parent.getItemAtPosition(position);
+            android.content.Intent intent =
+                    new android.content.Intent(MainActivity.this, ShowActivity.class);
+            intent.putExtra("CITY_NAME", cityName);
+            startActivity(intent);
+        });
+
         final Button addButton = findViewById(R.id.button_add);
         addButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
